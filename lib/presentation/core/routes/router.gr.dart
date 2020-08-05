@@ -1,0 +1,71 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+// **************************************************************************
+// AutoRouteGenerator
+// **************************************************************************
+
+// ignore_for_file: public_member_api_docs
+
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+
+import '../../custom_transitions/pages/custom_first_page.dart';
+import '../../custom_transitions/pages/custom_second_page.dart';
+import '../pages/splash_page.dart';
+
+class Routes {
+  static const String splashPage = '/';
+  static const String customFirst_Page = '/custom-first_-page';
+  static const String customSecond_Page = '/custom-second_-page';
+  static const all = <String>{
+    splashPage,
+    customFirst_Page,
+    customSecond_Page,
+  };
+}
+
+class Router extends RouterBase {
+  @override
+  List<RouteDef> get routes => _routes;
+  final _routes = <RouteDef>[
+    RouteDef(Routes.splashPage, page: SplashPage),
+    RouteDef(Routes.customFirst_Page, page: CustomFirst_Page),
+    RouteDef(Routes.customSecond_Page, page: CustomSecond_Page),
+  ];
+  @override
+  Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
+  final _pagesMap = <Type, AutoRouteFactory>{
+    SplashPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => SplashPage(),
+        settings: data,
+      );
+    },
+    CustomFirst_Page: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => CustomFirst_Page(),
+        settings: data,
+      );
+    },
+    CustomSecond_Page: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => CustomSecond_Page(),
+        settings: data,
+      );
+    },
+  };
+}
+
+/// ************************************************************************
+/// Navigation helper methods extension
+/// *************************************************************************
+
+extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
+  Future<dynamic> pushSplashPage() => push<dynamic>(Routes.splashPage);
+
+  Future<dynamic> pushCustomFirst_Page() =>
+      push<dynamic>(Routes.customFirst_Page);
+
+  Future<dynamic> pushCustomSecond_Page() =>
+      push<dynamic>(Routes.customSecond_Page);
+}
