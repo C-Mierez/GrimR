@@ -8,6 +8,14 @@ class SplashPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Splash Page :)'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(MdiIcons.formatPaint),
+            onPressed: () {
+              Navigator.of(context).pushNamed(Routes.settings);
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
