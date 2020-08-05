@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class CustomSecond_Page extends StatelessWidget {
@@ -8,19 +9,19 @@ class CustomSecond_Page extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
-              color: Colors.grey[800],
+              color: Colors.deepPurple[700],
             ),
           ),
           Expanded(
             child: Container(
-              color: Colors.grey[900],
+              color: Colors.deepPurple[200],
             ),
           )
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.of(context).pop();
+          ExtendedNavigator.of(context).pop();
         },
         label: const Text('Navigate Back'),
       ),

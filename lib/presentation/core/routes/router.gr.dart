@@ -9,18 +9,22 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../../custom_animations/pages/basic_animation_page.dart';
 import '../../custom_transitions/pages/custom_first_page.dart';
 import '../../custom_transitions/pages/custom_second_page.dart';
 import '../pages/splash_page.dart';
+import 'custom_transitions.dart';
 
 class Routes {
   static const String splashPage = '/';
   static const String customFirst_Page = '/custom-first_-page';
   static const String customSecond_Page = '/custom-second_-page';
+  static const String basicAnimationPage = '/basic-animation-page';
   static const all = <String>{
     splashPage,
     customFirst_Page,
     customSecond_Page,
+    basicAnimationPage,
   };
 }
 
@@ -31,6 +35,7 @@ class Router extends RouterBase {
     RouteDef(Routes.splashPage, page: SplashPage),
     RouteDef(Routes.customFirst_Page, page: CustomFirst_Page),
     RouteDef(Routes.customSecond_Page, page: CustomSecond_Page),
+    RouteDef(Routes.basicAnimationPage, page: BasicAnimationPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -48,8 +53,17 @@ class Router extends RouterBase {
       );
     },
     CustomSecond_Page: (data) {
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            CustomSecond_Page(),
+        settings: data,
+        transitionsBuilder: customTrans_double,
+        transitionDuration: const Duration(milliseconds: 400),
+      );
+    },
+    BasicAnimationPage: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => CustomSecond_Page(),
+        builder: (context) => BasicAnimationPage(),
         settings: data,
       );
     },
@@ -68,4 +82,7 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushCustomSecond_Page() =>
       push<dynamic>(Routes.customSecond_Page);
+
+  Future<dynamic> pushBasicAnimationPage() =>
+      push<dynamic>(Routes.basicAnimationPage);
 }
