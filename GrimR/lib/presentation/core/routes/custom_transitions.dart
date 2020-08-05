@@ -1,7 +1,12 @@
+// TODO: These should not be global, but isntead be wrapped in a class.
+// TODO: router.gr.dart is not properly importing them though
 import 'package:flutter/material.dart';
 
-Widget customTrans_slides(BuildContext context, Animation<double> animation,
-    Animation<double> secondaryAnimation, Widget child) {
+Widget customTransition_slides(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child) {
   return ScaleTransition(
     scale: animation,
     alignment: Alignment.center,
@@ -9,16 +14,14 @@ Widget customTrans_slides(BuildContext context, Animation<double> animation,
   );
 }
 
-Widget customTrans_double(BuildContext context, Animation<double> animation,
-    Animation<double> secondaryAnimation, Widget child) {
-  return SlideTransition(
-    position: Tween<Offset>(
-      begin: const Offset(1, 0),
-      end: const Offset(0, 0),
-    ).animate(CurvedAnimation(
-      curve: const Interval(0, 0.5, curve: Curves.easeOutCubic),
-      parent: animation,
-    )),
+Widget customTransition_CustomSecondPage(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child) {
+  return ScaleTransition(
+    scale: animation,
+    alignment: Alignment.center,
     child: child,
   );
 }

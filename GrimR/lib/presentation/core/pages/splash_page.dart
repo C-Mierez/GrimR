@@ -1,6 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:grimr/presentation/core/routes/router.gr.dart';
+import 'package:grimr/presentation/custom_animations/pages/refactored_animation_page.dart';
+import 'package:grimr/presentation/custom_transitions/pages/custom_first_page.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class SplashPage extends StatelessWidget {
   @override
@@ -11,17 +12,21 @@ class SplashPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ExtendedNavigator.of(context).pushCustomFirst_Page();
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => CustomFirst_Page(),
+          ));
         },
         child: Icon(Icons.art_track),
       ),
       body: Center(
         child: FloatingActionButton(
           onPressed: () {
-            ExtendedNavigator.of(context).pushRefactoredAnimationPage();
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => RefactoredAnimationPage(),
+            ));
           },
           heroTag: null,
-          child: Icon(Icons.directions_walk),
+          child: Icon(MdiIcons.animation),
         ),
       ),
     );

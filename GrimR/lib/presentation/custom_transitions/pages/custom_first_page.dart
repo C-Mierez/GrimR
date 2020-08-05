@@ -1,17 +1,22 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:grimr/presentation/core/routes/router.gr.dart';
+import 'package:grimr/presentation/custom_transitions/pages/custom_second_page.dart';
+import 'package:provider/provider.dart';
 
 class CustomFirst_Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
+    return Scaffold(body: Center(
+      child: FloatingActionButton(
         onPressed: () {
-          ExtendedNavigator.of(context).pushCustomSecond_Page();
+          Navigator.of(context).push(PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  ListenableProvider<Animation<double>>(
+                    create: (context) => animation,
+                    child: CustomSecond_Page(),
+                  ),
+              transitionDuration: const Duration(milliseconds: 700)));
         },
-        child: Icon(Icons.keyboard_arrow_right),
       ),
-    );
+    ));
   }
 }

@@ -1,6 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:grimr/presentation/core/routes/router.gr.dart';
+import 'package:grimr/presentation/core/pages/splash_page.dart';
 
 class MainApp extends StatelessWidget {
   @override
@@ -8,7 +7,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'GrimR',
       debugShowCheckedModeBanner: false,
-      builder: ExtendedNavigator(router: Router()),
+      home: SplashPage(),
       theme: ThemeData.dark().copyWith(
         floatingActionButtonTheme:
             FloatingActionButtonThemeData(backgroundColor: Colors.deepPurple),
