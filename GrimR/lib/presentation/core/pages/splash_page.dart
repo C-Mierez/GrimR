@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grimr/presentation/custom_animations/pages/refactored_animation_page.dart';
-import 'package:grimr/presentation/custom_transitions/pages/custom_first_page.dart';
+import 'package:grimr/presentation/core/routes/router.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class SplashPage extends StatelessWidget {
@@ -12,18 +11,14 @@ class SplashPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => CustomFirst_Page(),
-          ));
+          Navigator.of(context).pushNamed(Routes.customFirst);
         },
         child: Icon(Icons.art_track),
       ),
       body: Center(
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => RefactoredAnimationPage(),
-            ));
+            Navigator.of(context).pushNamed(Routes.refactoredAnimation);
           },
           heroTag: null,
           child: Icon(MdiIcons.animation),
