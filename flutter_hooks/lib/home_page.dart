@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
     _scrollController = ScrollController();
+    // This animation will be used to control how the button appears or disappears
     _hideFabAnimController = AnimationController(
       vsync: this,
       duration: kThemeAnimationDuration,
@@ -53,7 +54,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Let's Scroll"),
+        title: Text("Hook-less Home Screen"),
       ),
       floatingActionButton: FadeTransition(
         opacity: _hideFabAnimController,
