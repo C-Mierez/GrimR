@@ -18,15 +18,81 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         title: const Text('Preferences'),
       ),
       body: AnimatedContainer(
-        // Using this allows the animation to happen.
-        // Having the default values, although correct, the animation does not
-        // happen when they are updated.
-        color: Theme.of(context).colorScheme.background,
+        //? Using this allows the animation to happen.
+        //? Having the default values, although correct, the animation does not
+        //? happen when they are updated.
+        color: Theme.of(context).backgroundColor,
         duration: const Duration(seconds: 1),
-        child: const _ThemesListView(),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+        child: const _SettingsColumns(),
+      ),
+    );
+  }
+}
+
+class _SettingsColumns extends StatelessWidget {
+  const _SettingsColumns({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        const _TitleWidget(
+          titleText: 'Themes',
+          icon: Icons.color_lens,
+        ),
+        const Divider(
+          height: 10,
+          color: Colors.transparent,
+        ),
+        const _ThemesListView(),
+        const Divider(
+          height: 20,
+          color: Colors.transparent,
+        ),
+        const _TitleWidget(
+          titleText: 'Other stuff soon',
+          icon: Icons.build,
+        ),
+      ],
+    );
+  }
+}
+
+class _TitleWidget extends StatelessWidget {
+  final String titleText;
+  final IconData icon;
+
+  const _TitleWidget({
+    Key key,
+    this.titleText,
+    this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 40,
+      width: double.infinity,
+      alignment: Alignment.centerLeft,
+      child: Row(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(right: 8),
+            child: Icon(icon),
+          ),
+          Text(
+            titleText,
+            style: const TextStyle(fontSize: 30),
+          ),
+        ],
       ),
     );
   }
@@ -39,32 +105,42 @@ class _ThemesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(8),
-      // We want to show an option for each value in the enum
-      // aka for each theme defined in the app.
-      itemCount: AppTheme.values.length,
-      itemBuilder: (context, index) {
-        final AppTheme itemAppTheme = AppTheme.values[index];
-        final ColorScheme colorScheme = appThemeData[itemAppTheme].colorScheme;
-        final Color themePrimaryColor =
-            colorScheme.brightness == Brightness.light
-                ? colorScheme.primary
-                : colorScheme.surface;
-        return Card(
-          color: themePrimaryColor,
-          child: ListTile(
-            title: Text(
-              'Theme $index',
-              style: appThemeData[itemAppTheme].textTheme.bodyText1,
+    return Container(
+      padding: EdgeInsets.zero,
+      height: 170,
+      child: ListView.builder(
+        //padding: const EdgeInsets.all(8.0),
+        //? We want to show an option for each value in the enum
+        //? aka for each theme defined in the app.
+        itemCount: AppTheme.values.length,
+        itemBuilder: (context, index) {
+          final AppTheme itemAppTheme = AppTheme.values[index];
+          final themePrimaryColor = appThemeData[itemAppTheme].primaryColor;
+          return Card(
+            //margin: EdgeInsets.zero,
+            margin: const EdgeInsets.symmetric(vertical: 5),
+            color: themePrimaryColor,
+            child: ListTile(
+              title: Text(
+                'Theme $index',
+                //textAlign: TextAlign.center,
+                //? In order to follow the properties of wether a dark or light theme
+                //? is being used, using the copyWith() method is much better
+                style: appThemeData[itemAppTheme].textTheme.bodyText1.copyWith(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              onTap: () {
+                BlocProvider.of<ThemesBloc>(context)
+                    .add(ThemesEvent.changed(theme: itemAppTheme));
+              },
+              //? Another way to change the spacing between the elements
+              visualDensity: VisualDensity.standard,
             ),
-            onTap: () {
-              BlocProvider.of<ThemesBloc>(context)
-                  .add(ThemesEvent.changed(theme: itemAppTheme));
-            },
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

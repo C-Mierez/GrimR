@@ -53,7 +53,6 @@ class _RefactoredAnimationPageState extends State<RefactoredAnimationPage>
       appBar: AppBar(
         title: const Text('Refactored Animation Page'),
       ),
-      backgroundColor: Colors.deepPurple[700],
       body: RotatingTransition(
         angleAnimation: animation,
         child: ElegantLogoImage(),

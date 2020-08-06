@@ -12,7 +12,7 @@ class CustomSecond_Page extends StatelessWidget {
               initialOffsetX: 1,
               intervalStart: 0,
               intervalEnd: 0.5,
-              color: Colors.deepPurple[700],
+              color: Theme.of(context).accentColor,
             ),
           ),
           Expanded(
@@ -20,7 +20,7 @@ class CustomSecond_Page extends StatelessWidget {
               initialOffsetX: -1,
               intervalStart: 0.5,
               intervalEnd: 1,
-              color: Colors.deepPurple[200],
+              color: Theme.of(context).primaryColor,
             ),
           ),
         ],
