@@ -9,6 +9,15 @@ I am determined to try and make this project as maintainable as I'm physically a
 ## Dev Log
 I will also be keeping record of major additions I make to the project, just as a way to have a "log" for changes that involve big overhauls, overshadowing what was previously done. 
 
+### 06/08/20:
+- *Major* refactoring on the Themes feature.
+  - Much much much less code duplication. 
+    - Separated the creation of the ThemeData object to different methods, and themselves also use another private method.
+    - This made the themes extremely easy to create and/or modify, and even made it semantically easier to use the ThemeData.from() factory.
+- Flutter seems to be moving away from ThemeData and instead focusing on ColorScheme.
+  - The refactoring involved using a new constructor (factory) defined for ThemeData which actually uses a ColorScheme instead.
+  - Implementation of this factory was confusing. More info about it commented inside the code.
+
 ### 05/08/20:
 - Started the **GrimR** playground project. 
 - Set up some basic BLoc state management.
