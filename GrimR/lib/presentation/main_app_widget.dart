@@ -22,6 +22,7 @@ class MainApp extends StatelessWidget {
       initialRoute: Routes.splashScreen,
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: state.themeData,
+
       //ThemeData.dark().copyWith(
       //floatingActionButtonTheme: const FloatingActionButtonThemeData(
       //    backgroundColor: Colors.deepPurple),

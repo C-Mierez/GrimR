@@ -13,8 +13,8 @@ class ThemesBloc extends Bloc<ThemesEvent, ThemesState> {
   Stream<ThemesState> mapEventToState(
     ThemesEvent event,
   ) async* {
-    yield* event.maybeMap(
-      orElse: () async* {
+    yield* event.map(
+      initial: (event) async* {
         yield state.copyWith();
       },
       changed: (event) async* {
