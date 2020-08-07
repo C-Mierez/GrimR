@@ -51,6 +51,12 @@ class _RefactoredAnimationPageState extends State<RefactoredAnimationPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Hero(tag: 'appBarIcon', child: Icon(Icons.arrow_back)),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         title: const Text('Refactored Animation Page'),
       ),
       body: RotatingTransition(

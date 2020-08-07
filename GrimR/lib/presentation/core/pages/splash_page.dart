@@ -10,7 +10,10 @@ class SplashPage extends StatelessWidget {
         title: const Text('Splash Page :)'),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(MdiIcons.formatPaint),
+            icon: const Hero(
+              tag: 'appBarIcon',
+              child: Icon(MdiIcons.formatPaint),
+            ),
             onPressed: () {
               Navigator.of(context).pushNamed(Routes.settings);
             },
@@ -21,6 +24,7 @@ class SplashPage extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).pushNamed(Routes.customFirst);
         },
+        heroTag: 'customTrans',
         child: const Icon(Icons.art_track),
       ),
       body: Center(

@@ -26,6 +26,7 @@ class SettingsPage extends StatelessWidget {
         //? Having the default values, although correct, the animation does not
         //? happen when they are updated.
         color: Theme.of(context).backgroundColor,
+        curve: Curves.easeOut,
         duration: const Duration(seconds: 1),
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
         child: const _SettingsColumns(),
@@ -131,7 +132,10 @@ class _ThemesListView extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              onTap: () {
+              onTap: () async {
+                //? Adding a little delay to allow the tap animation to happen before
+                //? doing any changes. This leads to better visuals
+                await Future.delayed(const Duration(milliseconds: 200));
                 BlocProvider.of<ThemesBloc>(context)
                     .add(ThemesEvent.changed(theme: itemAppTheme));
               },

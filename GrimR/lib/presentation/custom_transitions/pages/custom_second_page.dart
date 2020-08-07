@@ -30,6 +30,7 @@ class CustomSecond_Page extends StatelessWidget {
           Navigator.of(context).pop();
         },
         label: const Text('Navigate Back'),
+        heroTag: 'customTrans',
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
