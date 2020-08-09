@@ -73,6 +73,10 @@ class SliverSettingsContent {
     }
   }
 
+  void Function() _openThemesFabMenu(BuildContext context) {
+    return () {};
+  }
+
   void Function() _openThemesSelection(BuildContext context) {
     return () {
       showModalBottomSheet(

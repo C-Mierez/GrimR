@@ -17,8 +17,10 @@ I will also be keeping record of major additions I make to the project, just as 
 
   - I did tweak the design a bit later, but it originally looked the same :)
 - Moved the Theme selection feature into the new Preferences page after pressing the corresponding button. Themes work great with the new UI.
+
 - Re-did the Preferences page. Again. Refactored everything into something more maintainable and scalable using builders.
 
+- Reworked the ThemesBloc to be a **Hydrated Bloc**. Now the Themes state can be saved, so the app remembers the selected theme after closing it. 
 
 ### 06/08/20:
 - *Major* refactoring on the Themes feature.

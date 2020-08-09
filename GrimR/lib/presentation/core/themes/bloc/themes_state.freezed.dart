@@ -13,9 +13,11 @@ class _$ThemesStateTearOff {
   const _$ThemesStateTearOff();
 
 // ignore: unused_element
-  _ThemesState call({@required ThemeData themeData}) {
+  _ThemesState call(
+      {@required ThemeData themeData, @required AppTheme appTheme}) {
     return _ThemesState(
       themeData: themeData,
+      appTheme: appTheme,
     );
   }
 }
@@ -25,6 +27,7 @@ const $ThemesState = _$ThemesStateTearOff();
 
 mixin _$ThemesState {
   ThemeData get themeData;
+  AppTheme get appTheme;
 
   $ThemesStateCopyWith<ThemesState> get copyWith;
 }
@@ -33,7 +36,7 @@ abstract class $ThemesStateCopyWith<$Res> {
   factory $ThemesStateCopyWith(
           ThemesState value, $Res Function(ThemesState) then) =
       _$ThemesStateCopyWithImpl<$Res>;
-  $Res call({ThemeData themeData});
+  $Res call({ThemeData themeData, AppTheme appTheme});
 }
 
 class _$ThemesStateCopyWithImpl<$Res> implements $ThemesStateCopyWith<$Res> {
@@ -46,10 +49,12 @@ class _$ThemesStateCopyWithImpl<$Res> implements $ThemesStateCopyWith<$Res> {
   @override
   $Res call({
     Object themeData = freezed,
+    Object appTheme = freezed,
   }) {
     return _then(_value.copyWith(
       themeData:
           themeData == freezed ? _value.themeData : themeData as ThemeData,
+      appTheme: appTheme == freezed ? _value.appTheme : appTheme as AppTheme,
     ));
   }
 }
@@ -60,7 +65,7 @@ abstract class _$ThemesStateCopyWith<$Res>
           _ThemesState value, $Res Function(_ThemesState) then) =
       __$ThemesStateCopyWithImpl<$Res>;
   @override
-  $Res call({ThemeData themeData});
+  $Res call({ThemeData themeData, AppTheme appTheme});
 }
 
 class __$ThemesStateCopyWithImpl<$Res> extends _$ThemesStateCopyWithImpl<$Res>
@@ -75,23 +80,29 @@ class __$ThemesStateCopyWithImpl<$Res> extends _$ThemesStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object themeData = freezed,
+    Object appTheme = freezed,
   }) {
     return _then(_ThemesState(
       themeData:
           themeData == freezed ? _value.themeData : themeData as ThemeData,
+      appTheme: appTheme == freezed ? _value.appTheme : appTheme as AppTheme,
     ));
   }
 }
 
 class _$_ThemesState implements _ThemesState {
-  const _$_ThemesState({@required this.themeData}) : assert(themeData != null);
+  const _$_ThemesState({@required this.themeData, @required this.appTheme})
+      : assert(themeData != null),
+        assert(appTheme != null);
 
   @override
   final ThemeData themeData;
+  @override
+  final AppTheme appTheme;
 
   @override
   String toString() {
-    return 'ThemesState(themeData: $themeData)';
+    return 'ThemesState(themeData: $themeData, appTheme: $appTheme)';
   }
 
   @override
@@ -100,12 +111,17 @@ class _$_ThemesState implements _ThemesState {
         (other is _ThemesState &&
             (identical(other.themeData, themeData) ||
                 const DeepCollectionEquality()
-                    .equals(other.themeData, themeData)));
+                    .equals(other.themeData, themeData)) &&
+            (identical(other.appTheme, appTheme) ||
+                const DeepCollectionEquality()
+                    .equals(other.appTheme, appTheme)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(themeData);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(themeData) ^
+      const DeepCollectionEquality().hash(appTheme);
 
   @override
   _$ThemesStateCopyWith<_ThemesState> get copyWith =>
@@ -113,10 +129,14 @@ class _$_ThemesState implements _ThemesState {
 }
 
 abstract class _ThemesState implements ThemesState {
-  const factory _ThemesState({@required ThemeData themeData}) = _$_ThemesState;
+  const factory _ThemesState(
+      {@required ThemeData themeData,
+      @required AppTheme appTheme}) = _$_ThemesState;
 
   @override
   ThemeData get themeData;
+  @override
+  AppTheme get appTheme;
   @override
   _$ThemesStateCopyWith<_ThemesState> get copyWith;
 }
