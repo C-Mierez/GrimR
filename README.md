@@ -9,6 +9,17 @@ I am determined to try and make this project as maintainable as I'm physically a
 ## Dev Log
 I will also be keeping record of major additions I make to the project, just as a way to have a "log" for changes that involve big overhauls, overshadowing what was previously done. 
 
+### 09/08/20:
+- Guess what? Even more refactoring!
+  - Revamped the entire settings page. Tried using Slivers and recreating a design gotten from [Dribbble](https://dribbble.com/shots/6689587-Profile-settings-exploration/attachments). I'd say I did a pretty good job.
+  ![Original Design](https://static.dribbble.com/users/153131/screenshots/6689587/frame_2x.png)
+  ![My Design](https://imgur.com/QShNFiG.jpg)
+
+  - I did tweak the design a bit later, but it originally looked the same :)
+- Moved the Theme selection feature into the new Preferences page after pressing the corresponding button. Themes work great with the new UI.
+- Re-did the Preferences page. Again. Refactored everything into something more maintainable and scalable using builders.
+
+
 ### 06/08/20:
 - *Major* refactoring on the Themes feature.
   - Much much much less code duplication. 
