@@ -68,7 +68,7 @@ ColorScheme schemeCreator(
   final bool isDark = brightness == Brightness.dark;
   return ColorScheme(
     // Read comment above
-    primary: primaryColor,
+    primary: isDark ? primaryColorDark : primaryColor,
     surface: primaryColorDark,
     onPrimary: isDark ? backgroundDark : background,
     onSurface: isDark ? backgroundDark : background,

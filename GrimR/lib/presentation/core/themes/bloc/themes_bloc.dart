@@ -38,11 +38,7 @@ class ThemesBloc extends HydratedBloc<ThemesEvent, ThemesState> {
 
   @override
   Map<String, int> toJson(ThemesState state) {
-    int themeIndex = -1;
-    final theme = AppTheme.values.firstWhere((element) {
-      themeIndex++;
-      return element == state.appTheme;
-    });
+    final themeIndex = AppTheme.values.indexOf(state.appTheme);
     return {'themeIndex': themeIndex};
   }
 }

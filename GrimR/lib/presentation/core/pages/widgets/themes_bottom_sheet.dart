@@ -58,6 +58,30 @@ class _List extends StatelessWidget {
         final AppTheme itemAppTheme = AppTheme.values[localIndex];
         return index % 2 == 0
             ? ListTile(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+                trailing: CircleAvatar(
+                  backgroundColor:
+                      appThemeData[itemAppTheme].colorScheme.primary,
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return CircleAvatar(
+                        radius: constraints.maxHeight / 3,
+                        backgroundColor:
+                            appThemeData[itemAppTheme].colorScheme.secondary,
+                        child: LayoutBuilder(
+                          builder: (context, constraints) {
+                            return CircleAvatar(
+                              radius: constraints.maxHeight / 3,
+                              backgroundColor: appThemeData[itemAppTheme]
+                                  .colorScheme
+                                  .background,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ),
                 title: Text(
                   'Theme $localIndex',
                   style: TextStyle(
