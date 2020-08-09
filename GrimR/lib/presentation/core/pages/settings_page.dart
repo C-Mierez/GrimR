@@ -29,14 +29,14 @@ class SettingsPage extends StatelessWidget {
         curve: Curves.easeOut,
         duration: const Duration(seconds: 1),
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-        child: const _SettingsColumns(),
+        child: const _SettingsColumn(),
       ),
     );
   }
 }
 
-class _SettingsColumns extends StatelessWidget {
-  const _SettingsColumns({
+class _SettingsColumn extends StatelessWidget {
+  const _SettingsColumn({
     Key key,
   }) : super(key: key);
 

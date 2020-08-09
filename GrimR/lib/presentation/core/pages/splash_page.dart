@@ -15,7 +15,7 @@ class SplashPage extends StatelessWidget {
               child: Icon(MdiIcons.formatPaint),
             ),
             onPressed: () {
-              Navigator.of(context).pushNamed(Routes.settings);
+              Navigator.of(context).pushNamed(Routes.sliverSettings);
             },
           ),
         ],
@@ -28,12 +28,26 @@ class SplashPage extends StatelessWidget {
         child: const Icon(Icons.art_track),
       ),
       body: Center(
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed(Routes.refactoredAnimation);
-          },
-          heroTag: null,
-          child: const Icon(MdiIcons.animation),
+        child: Wrap(
+          direction: Axis.vertical,
+          alignment: WrapAlignment.center,
+          spacing: 30,
+          children: <Widget>[
+            FloatingActionButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.refactoredAnimation);
+              },
+              heroTag: null,
+              child: const Icon(MdiIcons.animation),
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.sliverTest);
+              },
+              heroTag: null,
+              child: const Icon(MdiIcons.signalDistanceVariant),
+            ),
+          ],
         ),
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grimr/presentation/core/pages/settings_page.dart';
+import 'package:grimr/presentation/core/pages/sliver_settings_page.dart';
+import 'package:grimr/presentation/core/pages/sliver_test_page.dart';
 import 'package:grimr/presentation/core/pages/splash_page.dart';
 import 'package:grimr/presentation/custom_animations/pages/basic_animation_page.dart';
 import 'package:grimr/presentation/custom_animations/pages/refactored_animation_page.dart';
@@ -10,6 +12,8 @@ import 'package:provider/provider.dart';
 class Routes {
   static const String splashScreen = '/';
   static const String settings = '/settings';
+  static const String sliverSettings = '/sliverSettings';
+  static const String sliverTest = '/sliverTest';
   static const String basicAnimation = '/basicAnimation';
   static const String refactoredAnimation = '/refactoredAnimation';
   static const String customFirst = '/customFirst';
@@ -28,6 +32,14 @@ class RouteGenerator {
         );
       case Routes.settings:
         return _settingsPageRoute(duration: const Duration(milliseconds: 700));
+      case Routes.sliverSettings:
+        return MaterialPageRoute(
+          builder: (_) => const SliverSettingsPage(),
+        );
+      case Routes.sliverTest:
+        return MaterialPageRoute(
+          builder: (_) => const SliverTestPage(),
+        );
 
       case Routes.basicAnimation:
         return MaterialPageRoute(
