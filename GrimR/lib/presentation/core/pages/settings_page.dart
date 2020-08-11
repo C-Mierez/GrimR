@@ -116,7 +116,7 @@ class _ThemesListView extends StatelessWidget {
         itemCount: AppTheme.values.length,
         itemBuilder: (context, index) {
           final AppTheme itemAppTheme = AppTheme.values[index];
-          final themePrimaryColor = appThemeData[itemAppTheme].primaryColor;
+          final themePrimaryColor = mapAppTheme(itemAppTheme).primaryColor;
           return Card(
             //margin: EdgeInsets.zero,
             margin: const EdgeInsets.symmetric(vertical: 5),
@@ -127,7 +127,7 @@ class _ThemesListView extends StatelessWidget {
                 //textAlign: TextAlign.center,
                 //? In order to follow the properties of wether a dark or light theme
                 //? is being used, using the copyWith() method is much better
-                style: appThemeData[itemAppTheme].textTheme.bodyText1.copyWith(
+                style: mapAppTheme(itemAppTheme).textTheme.bodyText1.copyWith(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),

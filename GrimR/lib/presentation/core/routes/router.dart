@@ -7,6 +7,7 @@ import 'package:grimr/presentation/custom_animations/pages/basic_animation_page.
 import 'package:grimr/presentation/custom_animations/pages/refactored_animation_page.dart';
 import 'package:grimr/presentation/custom_transitions/pages/custom_first_page.dart';
 import 'package:grimr/presentation/custom_transitions/pages/custom_second_page.dart';
+import 'package:grimr/presentation/home/pages/home_page.dart';
 import 'package:provider/provider.dart';
 
 class Routes {
@@ -18,6 +19,7 @@ class Routes {
   static const String refactoredAnimation = '/refactoredAnimation';
   static const String customFirst = '/customFirst';
   static const String customSecond = '/customSecond';
+  static const String home = '/home';
 }
 
 class RouteGenerator {
@@ -30,12 +32,15 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => SplashPage(),
         );
+      case Routes.home:
+        return MaterialPageRoute(
+          builder: (_) => const HomePage(),
+        );
       case Routes.settings:
         return _settingsPageRoute(duration: const Duration(milliseconds: 700));
       case Routes.sliverSettings:
-        return MaterialPageRoute(
-          builder: (_) => const SliverSettingsPage(),
-        );
+        return _sliverSettingsPageRoute(
+            duration: const Duration(milliseconds: 700));
       case Routes.sliverTest:
         return MaterialPageRoute(
           builder: (_) => const SliverTestPage(),
@@ -104,6 +109,31 @@ class RouteGenerator {
         opacity: animation,
         child: child,
       ),
+      transitionDuration: duration,
+    );
+  }
+
+  static PageRouteBuilder _sliverSettingsPageRoute({
+    @required Duration duration,
+  }) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const SliverSettingsPage(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        if (animation.status == AnimationStatus.reverse) {
+          return _SlidePageTransition(
+            animation: animation,
+            animationCurve: Curves.easeInToLinear,
+            child: child,
+          );
+        } else {
+          return _SlidePageTransition(
+            animation: animation,
+            animationCurve: Curves.easeOutCubic,
+            child: child,
+          );
+        }
+      },
       transitionDuration: duration,
     );
   }

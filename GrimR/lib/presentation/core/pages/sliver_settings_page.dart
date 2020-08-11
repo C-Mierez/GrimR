@@ -62,6 +62,7 @@ class _detailedPreferences extends StatelessWidget {
   Widget build(BuildContext context) {
     final pageContent = Provider.of<SliverSettingsContent>(context);
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     return Column(
       children: [
         Container(
@@ -134,7 +135,6 @@ class _detailedItemBuilder extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             CircleAvatar(
-              backgroundColor: colorScheme.secondary,
               child: Icon(
                 pageContent.itemIcon(currentSectionId, currentId),
                 color: colorScheme.onSecondary,
@@ -175,14 +175,28 @@ class _mainAppBar extends StatelessWidget {
       backgroundColor: colorScheme.background,
       expandedHeight: 100,
       pinned: true,
-      leading: IconButton(
-        icon: Icon(
-          Icons.chevron_left,
-          color: colorScheme.onBackground,
-        ),
-        onPressed: () {
-          Navigator.of(context).pop();
+      leading: Hero(
+        flightShuttleBuilder: (flightContext, animation, flightDirection,
+            fromHeroContext, toHeroContext) {
+          if (animation.status == AnimationStatus.forward) {
+            // return fromHeroContext.widget;
+            return Container();
+          } else {
+            return toHeroContext.widget;
+          }
         },
+        tag: 'sliverButton',
+        child: Material(
+          child: IconButton(
+            icon: Icon(
+              Icons.chevron_left,
+              color: colorScheme.onBackground,
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
       ),
       flexibleSpace: FlexibleSpaceBar(
         stretchModes: [StretchMode.fadeTitle],

@@ -8,7 +8,7 @@ class ThemesBloc extends HydratedBloc<ThemesEvent, ThemesState> {
   ThemesBloc()
       : super(
           ThemesState(
-              themeData: appThemeData[AppTheme.GreenLight],
+              themeData: mapAppTheme(AppTheme.GreenLight),
               appTheme: AppTheme.GreenLight),
         );
 
@@ -22,7 +22,7 @@ class ThemesBloc extends HydratedBloc<ThemesEvent, ThemesState> {
       },
       changed: (event) async* {
         yield ThemesState(
-            themeData: appThemeData[event.theme], appTheme: event.theme);
+            themeData: mapAppTheme(event.theme), appTheme: event.theme);
       },
     );
   }
@@ -31,7 +31,7 @@ class ThemesBloc extends HydratedBloc<ThemesEvent, ThemesState> {
   ThemesState fromJson(Map<String, dynamic> json) {
     final themeIndex = json['themeIndex'] as int;
     return ThemesState(
-      themeData: appThemeData[AppTheme.values[themeIndex]],
+      themeData: mapAppTheme(AppTheme.values[themeIndex]),
       appTheme: AppTheme.values[themeIndex],
     );
   }
